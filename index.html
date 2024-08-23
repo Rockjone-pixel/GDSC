@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome to the Birthday Bash!</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="android-chrome-192x192.png" type="image/x-icon" />
+  </head>
+  <body>
+    <div class="firstpage">
+      <nav class="navbar">
+        <ul>
+          <li><a href="#comeon">Home</a></li>
+          <li><a href="#memories">Memories of Us</a></li>
+          <li><a href="#gifts-section">Gifts for you 🎁</a></li>
+        </ul>
+      </nav>
+
+      <div class="container">
+        <h1 id="comeon" class="greeting">
+          <span id="dynamic-text" class="typing"></span>
+        </h1>
+        <img
+          src="https://img.freepik.com/free-photo/medium-shot-friends-posing-together-photobooth_23-2150171694.jpg?t=st=1723961574~exp=1723965174~hmac=63d2a4b1d139df72f1f5b8becfe0c2114c69759ee975467cb61bf1d8eaaa38bc&w=360"
+          alt="Happiest Birthday,my friend!"
+          class="birthday_pic"
+        />
+
+        <div class="surprise-message">
+          <p>
+            I have a special song waiting for you!
+            <a href="https://youtu.be/i2ceSzs2y4Q">Click here</a> to find out!
+          </p>
+        </div>
+      </div>
+
+      <audio id="backgroundMusic" src="song.mp3" loop autoplay controls></audio>
+
+      <script>
+        var text = "Happiest birthday,my friend!My all-time go-to person🤍!";
+        var i = 0;
+        var speed = 80;
+
+        function typeWriter() {
+          if (i < text.length) {
+            document.getElementById("dynamic-text").textContent +=
+              text.charAt(i);
+            i++;
+            setTimeout(typeWriter, speed);
+          }
+        }
+
+        window.onload = function () {
+          typeWriter();
+          createConfetti();
+        };
+
+
+        function createConfetti() {
+          const confettiContainer = document.createElement("div");
+          for (let i = 0; i < 100; i++) {
+            const confetti = document.createElement("div");
+            confetti.classList.add("confetti");
+            confetti.style.left = Math.random() * 100 + "vw";
+            confetti.style.animationDelay = Math.random() * 2 + "s";
+            confetti.style.backgroundColor = getRandomColor();
+            confettiContainer.appendChild(confetti);
+          }
+          document.body.appendChild(confettiContainer);
+        }
+
+        function getRandomColor() {
+          const colors = [
+            "#ff6347",
+            "#ffd700",
+            "#8fbc8f",
+            "#ff69b4",
+            "#87cefa",
+          ];
+          return colors[Math.floor(Math.random() * colors.length)];
+        }
+      </script>
+    </div>
+
+    <div id="secondpage" id="comeoff">
+      <div class="container">
+        <h1 id="memories" class="sub-title">
+          Memories of us: Let's go through this beautiful journey ❤
+        </h1>
+
+        <div class="work-list">
+          <div class="work">
+            <img src="imresizer-1724087358724.jpg" />
+            <div class="layer">
+              <h4>1-> You and me celebrating your 4th Birthday together!</h4>
+              <p>
+                It will always remain one of the best birthdays i have attended
+                ever!
+              </p>
+            </div>
+          </div>
+          <div class="work">
+            <img src="Screenshot (2940).png" />
+            <div class="layer">
+              <h4>2-> It was our First Day in School together!!</h4>
+              <p>
+                Two best friends, side by side, ready to conquer the first day
+                of school together
+              </p>
+            </div>
+          </div>
+
+          <div class="work">
+            <img src="Screenshot (2939).png" />
+            <div class="layer">
+              <h4>3-> Our 1st Ride together to Sikkim!</h4>
+              <p>
+                With you,every journey becomes wonderful memories as adventure
+                begins with the best company!
+              </p>
+            </div>
+          </div>
+
+          <div class="work">
+            <img src="imresizer-1724089979066.jpg" />
+            <div class="layer">
+              <h4>4-> The first day of our college!</h4>
+              <p>It all started with new beginnings, same old friendship!</p>
+            </div>
+          </div>
+
+          <div class="work">
+            <img src="Screenshot (2942).png" />
+            <div class="layer">
+              <h4>5-> The fav bunch of people!❤️</h4>
+              <p>
+                Undoubtedly, it's always better together when we all are
+                together!
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="gifts-section" class="gifts-container">
+      <h2 class="gift-title">Thanks for scrolling down, here's a GIFT for you,click click clickkk!🎁🎉</h2>
+      <div class="gifts">
+        <img
+          src="gift_1.jpg"
+          class="gift"
+          alt="Gift 1"
+          onclick="showGift('Gift 1', 'What gifts you want huh? I am already the bestest gift for you in your life!!🎁')"
+        />
+        <img
+          src="gift_2.jpg"
+          class="gift"
+          alt="Gift 2"
+          onclick="showGift('Gift 2', 'Here’s another amazing gift,i love you yaar!❤️ 🎉')"
+        />
+        <img
+          src="gift_3.jpg"
+          class="gift"
+          alt="Gift 3"
+          onclick="showGift('Gift 3', 'You’ll definitely be loving this one!❤ 🎊')"
+        />
+      </div>
+    </div>
+
+    <div id="giftModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 id="gift-title"></h2>
+        <p id="gift-message"></p>
+      </div>
+    </div>
+
+
+    <script>
+      function showGift(title, message) {
+        document.getElementById("gift-title").textContent = title;
+        document.getElementById("gift-message").textContent = message;
+        document.getElementById("giftModal").style.display = "block";
+      }
+
+      document.querySelector(".close").onclick = function () {
+        document.getElementById("giftModal").style.display = "none";
+      };
+
+      window.onclick = function (event) {
+        if (event.target == document.getElementById("giftModal")) {
+          document.getElementById("giftModal").style.display = "none";
+        }
+      };
+
+      function createMessageBox() {
+          const messages = [
+            "You are the best!",
+            "Surprise, surprise!",
+            "A little gift for you!",
+            "You light up the world!",
+            "Birthday hugs and kisses!",
+          ];
+
+          const randomMessage =
+            messages[Math.floor(Math.random() * messages.length)];
+
+          const messageBox = document.createElement("div");
+          messageBox.classList.add("message-box");
+          messageBox.textContent = randomMessage;
+
+          const randomLeft = Math.random() * 80; 
+          messageBox.style.left = randomLeft + "vw";
+
+          document.body.appendChild(messageBox);
+
+          setTimeout(() => {
+            messageBox.remove();
+          }, 4000); 
+        }
+
+        function startDroppingMessages() {
+          setInterval(createMessageBox, 3000); 
+        }
+
+        window.onload = function () {
+          typeWriter();
+          createConfetti();
+          startDroppingMessages();
+        };     
+                
+      
+    </script>
+
+  </body>
+</html>
